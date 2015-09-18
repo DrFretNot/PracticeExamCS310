@@ -32,6 +32,8 @@ public class HangmanTest {
         assertFalse(eIsAvailable);
     }
     
+    
+    
     // Exam Question 3
     // Implement the Hangman guess() method to make this 
     // unit test pass correctly.
@@ -43,6 +45,15 @@ public class HangmanTest {
         assertEquals(2, numOccurrences);
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Exam Question 4
     // Implement this unit test to ensure that six or more missed
     // letters before the word is guessed results in a loss. Then,
@@ -50,7 +61,16 @@ public class HangmanTest {
     // test pass correctly.
     @Test
     public void testSixOrMoreMissesCausesALoss() {
-        assertTrue(false);
+        Hangman h = new Hangman();
+        h.setWord("inconceivable");
+  		h.guess('d');
+        h.guess('f');
+        h.guess('g');
+        h.guess('h');
+        h.guess('j');
+        h.guess('k');
+        Hangman.Result value = h.getResult();
+        assertEquals(value, Hangman.Result.LOSE);
     }
     
     // Exam Question 5
@@ -60,7 +80,23 @@ public class HangmanTest {
     // test pass correctly.
     @Test
     public void testGuessingEveryLetterBeforeSixMissesCausesAWin() {
-        assertTrue(false);
+        Hangman h = new Hangman();
+        h.setWord("inconceivable");
+  		h.guess('i');
+        h.guess('n');
+        h.guess('c');
+        h.guess('o');
+        h.guess('e');
+        h.guess('v');   
+		h.guess('a');      
+		h.guess('b');
+        h.guess('l');//should be l
+
+        
+        Hangman.Result value = h.getResult();
+        assertEquals(value, Hangman.Result.WIN);
     }
+    
+    
     
 }
