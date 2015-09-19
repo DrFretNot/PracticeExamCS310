@@ -20,39 +20,27 @@ public class Hangman {
     }
     
     public boolean available(char c) {
-      
-       if(!(usedLetters.contains(c))){return true;}
-        
-       else{return false;}
+       return !usedLetters.contains(c);
     }
     
-    public int guess(char c) {
-     	boolean currentGuessOk = available(c);
-     	int letterCount = 0;
-     	
-     	if(currentGuessOk == true){
-     		usedLetters.add(c);
-
-			char[] charWord = word.toCharArray();
-			
+	public int guess(char c) {
+		boolean currentGuessOk = available(c);
+		int letterCount = 0;
+		if(currentGuessOk == true){
+			usedLetters.add(c);
 			boolean letterPresent = false;
-			for (int i = 0; i < charWord.length; i++){
-					if(charWord[i] == c){
-					letterPresent = true;
-					letterCount++;
-					lettersLeft--;
+			for (int i = 0; i < word.length(); i++){
+					if(word.charAt(i) == c){
+						letterPresent = true;letterCount++;
+						lettersLeft--;
 					}
-					else{}	
- 	    	}
- 	
-     		if(letterPresent == false){
+			}
+			if(letterPresent == false){
 				incorrectGuesses++;
 			}
-			else{}
-			}		
-     	else{}
-     	return letterCount;
-    }
+		}		
+		return letterCount;
+	}
     
     public Result getResult() {
         Result current = Result.NONE;

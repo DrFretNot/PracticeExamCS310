@@ -33,7 +33,6 @@ public class HangmanTest {
     }
     
     
-    
     // Exam Question 3
     // Implement the Hangman guess() method to make this 
     // unit test pass correctly.
@@ -44,16 +43,7 @@ public class HangmanTest {
         int numOccurrences = h.guess('e');
         assertEquals(2, numOccurrences);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     // Exam Question 4
     // Implement this unit test to ensure that six or more missed
     // letters before the word is guessed results in a loss. Then,
@@ -64,12 +54,22 @@ public class HangmanTest {
         Hangman h = new Hangman();
         h.setWord("inconceivable");
   		h.guess('d');
+  		Hangman.Result value = h.getResult();
+  		assertEquals(value, Hangman.Result.NONE);
         h.guess('f');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('g');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('h');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('j');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('k');
-        Hangman.Result value = h.getResult();
+        value = h.getResult();
         assertEquals(value, Hangman.Result.LOSE);
     }
     
@@ -82,18 +82,49 @@ public class HangmanTest {
     public void testGuessingEveryLetterBeforeSixMissesCausesAWin() {
         Hangman h = new Hangman();
         h.setWord("inconceivable");
+  		
+  		h.guess('d');
+  		Hangman.Result value = h.getResult();
+  		assertEquals(value, Hangman.Result.NONE);
+        h.guess('f');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
+        h.guess('g');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
+        h.guess('h');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
+        h.guess('j');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
+  		
   		h.guess('i');
+  		value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('n');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('c');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('o');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
         h.guess('e');
-        h.guess('v');   
-		h.guess('a');      
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
+        h.guess('v');
+        value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);   
+		h.guess('a');
+		value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);      
 		h.guess('b');
-        h.guess('l');//should be l
-
-        
-        Hangman.Result value = h.getResult();
+		value = h.getResult();
+        assertEquals(value, Hangman.Result.NONE);
+        h.guess('l');
+        value = h.getResult();
         assertEquals(value, Hangman.Result.WIN);
     }
     
